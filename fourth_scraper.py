@@ -53,6 +53,7 @@ try:
             end_time = item.find_element(By.XPATH, ".//div[contains(@class, 'flex-45 layout-row layout-align-end-center')]//span[@class='time__hours']").text
 
             print(f"Date: {date}, Role: {role}, Start Time: {start_time}, End Time: {end_time}")
+            ## Add to items to json file 
     except NoSuchElementException as e:
         raise Exception(f"Error extracting shift details: {e}")
 
