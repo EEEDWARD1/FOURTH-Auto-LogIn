@@ -1,4 +1,6 @@
 from config_manager import ConfigManager
+from fourth_automation import FourthAutomation
+from shift_manager import ShiftManager
 
 class MainMenu:
     def __init__(self):
@@ -9,12 +11,20 @@ class MainMenu:
         self.periodicity = self.config_manager.get_value('schedule', 'periodicity')
 
     def display_menu(self):
-        print("\n Main Menu")
-        print("1. Run Scraper")
-        print("2. Update Config")
-    
+        print("\n ########## Main Menu ########")
+        print("1. Run Program")
+        print("2. Update Schedule of Program")
+        print("3. Exit")
+        print("###########################")
+    1
     def run_scraper(self):
-        print("Running Scraper")
+        bot = FourthAutomation(self.username, self.password)
+        bot.run()
+
+        # Corrected method call with parentheses
+        shiftManager = ShiftManager(list_of_shifts=bot.get_shifts())
+        shiftManager.write_shifts()
+        
     
     def exit(self):
         print("Exiting")
@@ -32,10 +42,12 @@ class MainMenu:
 
             if choice == '1':
                 self.run_scraper()
-            elif choice == '2':
-                self.update_config()
-            else:
+            #elif choice == '2':
+            #self.update_config()
+            elif choice == '3':
                 self.exit()
+            else:
+                print("Invalid choice. Please enter a valid choice.")
         
 
 
